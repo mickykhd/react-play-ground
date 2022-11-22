@@ -17,14 +17,14 @@ function Modal() {
     <>
       <div className="modal-cntnr">
         <dialog ref={modalContainer} className="modal">
-          <h1>hello</h1>
+          <h1>Modal created using html & CSS in react</h1>
           <button onClick={handleClose} className="close-modal">
             close modal
           </button>
         </dialog>
 
-        <button className="btn" onClick={handleSubmit}>
-          close
+        <button className="open-modal" onClick={handleSubmit}>
+          open modal
         </button>
       </div>
     </>

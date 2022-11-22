@@ -1,3 +1,21 @@
 .modal::backdrop {
   background-color: rgba(0, 0, 0, 0.597);
 }
+.close-modal {
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 1rem;
+  font-size: 20px;
+  background-color: rgba(0, 0, 255, 0.651);
+  text-transform: capitalize;
+}
+.open-modal {
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 1rem;
+  font-size: 20px;
+  background-color: rgba(0, 255, 119, 0.651);
+  text-transform: capitalize;
+}

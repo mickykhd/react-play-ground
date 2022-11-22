@@ -10,7 +10,10 @@
   margin-left: 10px;
   border: none;
   border-radius: 5px;
-
+  color: white;
+  background-color: rgba(20, 0, 243, 0.993);
+  padding-left: 1.1rem;
+  padding-right: 1.1rem;
   /* font-size: 1.19rem; */
 }
 
