@@ -62,17 +62,11 @@ function Form({
 
         return (
           <div className="form-output" key={uuidv4()}>
-            <p className="form-output-name">
-              <h2>Name :</h2> <p className="sub-para">{name}</p>
-            </p>
-            <p className="form-output-age">
-              <h2> Age :</h2>
-              <p className="sub-para">{age}</p>
-            </p>
-            <p className="form-output-email">
-              <h2>Email :</h2>
-              <p className="sub-para">{email}</p>
-            </p>
+            <h2>Name :</h2> <p className="sub-para">{name}</p>
+            <h2> Age :</h2>
+            <p className="sub-para">{age}</p>
+            <h2>Email :</h2>
+            <p className="sub-para">{email}</p>
           </div>
         );
       })}
