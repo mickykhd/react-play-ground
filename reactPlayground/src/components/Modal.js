@@ -1,21 +1,22 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import { useRef } from "react";
 import "./Modal.css";
 function Modal() {
-  const gg = useRef(null);
+  const modalContainer = useRef(null);
 
   const handleSubmit = () => {
-    gg.current.showModal();
+    modalContainer.current.showModal();
   };
   const handleClose = () => {
-    gg.current.close();
+    modalContainer.current.close();
   };
 
   return (
     <>
       <div className="modal-cntnr">
-        <dialog ref={gg} className="modal">
+        <dialog ref={modalContainer} className="modal">
           <h1>hello</h1>
           <button onClick={handleClose} className="close-modal">
             close modal
@@ -30,4 +31,4 @@ function Modal() {
   );
 }
 
-export default Modal;
+export default connect()(Modal);
