@@ -1,0 +1,24 @@
+.input-body {
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
+.label {
+  padding: 5px;
+}
+.btn {
+  margin-left: 10px;
+  border: none;
+  border-radius: 5px;
+
+  /* font-size: 1.19rem; */
+}
+
+.form-output {
+  border: 1px solid white;
+  height: auto;
+  /* width:550; */
+  /* margin: 50%; */
+  width: 17vw;
+  margin-left: 40rem;
+}
