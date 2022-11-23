@@ -1,12 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import "./Modal.css";
-function Modal() {
+import Loader from "./Loader";
+
+const url = "https://official-joke-api.appspot.com/random_joke";
+const handleJokeData = async () => {
+  const response = await fetch(url);
+  const data = await response.json();
+  const jokeSet = data.setup;
+  const jokePun = data.punchline;
+
+  return data;
+};
+
+function Modal({ set, pun, handleJoke }) {
   const modalContainer = useRef(null);
 
-  const handleSubmit = () => {
+  const handleSubmit = ({ set, pun }) => {
     modalContainer.current.showModal();
   };
   const handleClose = () => {
@@ -15,20 +27,49 @@ function Modal() {
 
   return (
     <>
-      <div className="modal-cntnr">
-        <dialog ref={modalContainer} className="modal">
-          <h1>Modal created using html & CSS in react</h1>
-          <button onClick={handleClose} className="close-modal">
-            close modal
-          </button>
-        </dialog>
+      <dialog ref={modalContainer} className="modal">
+        <h1>Random Jokes</h1>
+        <h2>{set}</h2>
+        <h3>{pun}</h3>
+        <button
+          className="open-modal"
+          onClick={(e) => {
+            e.preventDefault();
 
-        <button className="open-modal" onClick={handleSubmit}>
-          open modal
+            return handleJoke();
+          }}
+        >
+          Generate Joke
         </button>
-      </div>
+        <button onClick={handleClose} className="close-modal">
+          close
+        </button>
+      </dialog>
+
+      <button className="open-modal" onClick={handleSubmit}>
+        open modal
+      </button>
     </>
   );
 }
+const mapStateToProps = (state) => {
+  const {
+    joke: { set, pun },
+  } = state;
 
-export default connect()(Modal);
+  return { set, pun };
+};
+
+const mapDispatchToPros = (dispatch) => {
+  return {
+    handleJoke: () => {
+      const jokePromise = handleJokeData().then((data) => {
+        return dispatch({
+          type: "HANDLE_JOKE",
+          payload: data,
+        });
+      });
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToPros)(Modal);

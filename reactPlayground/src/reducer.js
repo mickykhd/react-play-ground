@@ -1,6 +1,4 @@
-// import { initialState } from "./App";
-import { v4 as uuidv4 } from "uuid";
-
+import { useEffect } from "react";
 const reducer = (
   state = {
     count: 0,
@@ -8,6 +6,7 @@ const reducer = (
     age: "",
     email: "",
     totalData: [],
+    joke: { setup: "", punchline: "" },
   },
   action
 ) => {
@@ -46,9 +45,18 @@ const reducer = (
       email: "",
       age: "",
       totalData: [...state.totalData, newUser],
+      joke: { set: "", pun: "" },
     };
   }
 
+  if (action.type === "HANDLE_JOKE") {
+    console.log(action.payload.setup);
+
+    return {
+      ...state,
+      joke: { set: action.payload.setup, pun: action.payload.punchline },
+    };
+  }
   return state;
 };
 
