@@ -9,16 +9,14 @@ const url = "https://official-joke-api.appspot.com/random_joke";
 const handleJokeData = async () => {
   const response = await fetch(url);
   const data = await response.json();
-  const jokeSet = data.setup;
-  const jokePun = data.punchline;
 
   return data;
 };
 
-function Modal({ set, pun, handleJoke }) {
+function Modal({ set, pun, handleJoke, loading }) {
   const modalContainer = useRef(null);
 
-  const handleSubmit = ({ set, pun }) => {
+  const handleSubmit = () => {
     modalContainer.current.showModal();
   };
   const handleClose = () => {
@@ -44,6 +42,7 @@ function Modal({ set, pun, handleJoke }) {
         <button onClick={handleClose} className="close-modal">
           close
         </button>
+        <p>{loading ? "Loading.." : "Joke Loaded"}</p>
       </dialog>
 
       <button className="open-modal" onClick={handleSubmit}>
@@ -55,9 +54,10 @@ function Modal({ set, pun, handleJoke }) {
 const mapStateToProps = (state) => {
   const {
     joke: { set, pun },
+    loading,
   } = state;
 
-  return { set, pun };
+  return { set, pun, loading };
 };
 
 const mapDispatchToPros = (dispatch) => {

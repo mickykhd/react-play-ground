@@ -7,6 +7,7 @@ const reducer = (
     email: "",
     totalData: [],
     joke: { setup: "", punchline: "" },
+    loading: true,
   },
   action
 ) => {
@@ -55,6 +56,7 @@ const reducer = (
     return {
       ...state,
       joke: { set: action.payload.setup, pun: action.payload.punchline },
+      loading: false,
     };
   }
   return state;
